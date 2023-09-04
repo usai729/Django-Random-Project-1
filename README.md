@@ -15,3 +15,4 @@ django-admin startapp transactionControl<br>
 python manage.py makemigrations (After you've setup the database, it's details and listed newly created apps in apps list in the settings.py file)<br>
 python manage.py migrate<br>
 ```
+The project was to test how much I've learned in Django and meanwhile increase my knowledge hence the project is not complete 
