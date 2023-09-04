@@ -1,0 +1,107 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <b>Available Stock: {{ available_stock }}</b>
+    <a href="resetPairs">Reset Pairs</a>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Transaction ID</th>
+          <th>Transaction By</th>
+          <th>Transaction To</th>
+          <th>Amount Sent</th>
+          <th>Reward</th>
+          <th>Date Time</th>
+        </tr>
+      </thead>
+      {% for transaction_a in transactions_all %}
+      <tbody>
+        {% for transaction_a in transactions_all %}
+        <tr>
+          <td>{{ transaction_a.id }}</td>
+          <td>{{ transaction_a.by }}</td>
+          <td>{{ transaction_a.to }}</td>
+          <td>{{ transaction_a.amountSent }}</td>
+          <td>{{ transaction_a.reward }}</td>
+          <td>{{ transaction_a.date }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {%endfor%}
+    <br />
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Transaction ID</th>
+          <th>Transaction By</th>
+          <th>Transaction To</th>
+          <th>Amount Sent</th>
+          <th>Reward</th>
+          <th>Confirmed/Not</th>
+        </tr>
+      </thead>
+      {% for transaction_c in transactions_confirmed %}
+      <tbody>
+        {% for transactionc_c in transactions_confirmed %}
+        <tr>
+          <td>{{ transaction_c.id }}</td>
+          <td>{{ transaction_c.by }}</td>
+          <td>{{ transaction_c.to }}</td>
+          <td>{{ transaction_c.amountSent }}</td>
+          <td>{{ transaction_c.reward }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      {% endfor %}
+    </table>
+    <br />
+    <table>
+      <tbody>
+        <tr></tr>
+      </tbody>
+    </table>
+    <br />
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Pair ID</th>
+          <th>Sender</th>
+          <th>Receiver</th>
+          <th>Amount</th>
+          <th>UPI</th>
+          <th></th>
+        </tr>
+      </thead>
+      {% for pair in pairs %}
+      <tbody>
+        {% for pair in pairs %}
+        <tr>
+          <td>{{ pair.id }}</td>
+          <td>{{ pair.sender }}</td>
+          <td>{{ pair.receiver }}</td>
+          <td>{{ pair.amt }}</td>
+          <td>{{ pair.UPIr }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      {% endfor %}
+    </table>
+    <br />
+    <table>
+      <tbody>
+        <tr></tr>
+      </tbody>
+    </table>
+  </body>
+
+  <script src="{% static 'js/admin-view.js' %}"></script>
+</html>

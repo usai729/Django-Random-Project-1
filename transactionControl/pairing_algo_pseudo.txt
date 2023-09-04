@@ -1,0 +1,43 @@
+Function pair_senders_with_receiver(senders, receiver_amount)
+    Initialize an empty list sender_receiver_pairs
+
+    Sort senders in ascending order of available_amount
+
+    Initialize sender_index = 0
+    Initialize receiver_amount = receiver_amount
+
+    While receiver_amount > 0 and sender_index < length(senders)
+        current_sender = senders[sender_index]
+        sender_index = sender_index + 1
+
+        amount_to_send = minimum(current_sender.available_amount, receiver_amount)
+
+        current_sender.available_amount = current_sender.available_amount - amount_to_send
+
+        Add a pair to sender_receiver_pairs:
+            sender: current_sender.name
+            receiver: "Receiver"
+            amount: amount_to_send
+
+        receiver_amount = receiver_amount - amount_to_send
+
+    If receiver_amount > 0
+        Add an extra receiver to sender_receiver_pairs:
+            sender: "Extra Receiver"
+            receiver: "Receiver"
+            amount: receiver_amount
+
+    Return sender_receiver_pairs
+
+Example usage:
+senders = [
+    {name: "Sender1", available_amount: 5000},
+    {name: "Sender2", available_amount: 4000},
+    {name: "Sender3", available_amount: 3000},
+    {name: "Sender4", available_amount: 2000}
+]
+receiver_amount = 7000
+
+pairs = pair_senders_with_receiver(senders, receiver_amount)
+For each pair in pairs
+    Print pair.sender, "sends", pair.amount, "to", pair.receiver

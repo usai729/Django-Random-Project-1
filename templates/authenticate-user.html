@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'css/authenticate-user.css' %}" />
+
+    <title>User Authentication</title>
+
+    {% if messages %} {% for message in messages %}
+    <script>
+      alert("{{ message }}");
+    </script>
+    {% endfor %} {% endif %}
+  </head>
+  <body>
+    <div class="container">
+      <input type="checkbox" id="check" />
+      <!----LOGIN---->
+      <div class="login form">
+        <header>Login</header>
+        <form action="a" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="type" value="login" readonly />
+          <input
+            type="text"
+            name="username_login"
+            placeholder="Enter your email"
+          />
+          <input
+            type="password"
+            name="password_login"
+            placeholder="Enter your password"
+          />
+          <a href="#">Forgot password?</a>
+          <input type="submit" class="button" value="Login" />
+        </form>
+        <div class="signup">
+          <span class="signup"
+            >Don't have` an account?
+            <label for="check">Signup</label>
+          </span>
+        </div>
+      </div>
+      <!---->
+      <!----REGISTER---->
+      <div class="registration form">
+        <header>Signup</header>
+        <form action="a" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="type" value="signup" readonly />
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            value="usai7222@gmail.com"
+          />
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value="saiiiii"
+            placeholder="Create Username"
+            oninput="verifyUsername(this.value)"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Create a password"
+            value="1234"
+          />
+          <input
+            type="number"
+            name="upi"
+            id=""
+            placeholder="UPI Phone Number"
+            value="7569367540"
+          />
+          <input
+            type="text"
+            name="refID"
+            id=""
+            placeholder="Referral ID"
+            value="BD534479-47C5-11EE-9903-9BB5792660C8"
+          />
+          <input type="submit" class="button" id="signupbtn" value="Signup" />
+        </form>
+        <div class="signup">
+          <span class="signup"
+            >Already have an account?
+            <label for="check">Login</label>
+          </span>
+        </div>
+      </div>
+      <!---->
+      <!----REGISTER---->
+    </div>
+  </body>
+
+  <script>
+    function verifyUsername(value) {
+      const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+      if (
+        value.includes(" ") ||
+        specialChars.test(value) ||
+        value !== value.toLowerCase()
+      ) {
+        document.getElementById("signupbtn").setAttribute("disabled", "true");
+        document.getElementById("signupbtn").style.cursor = "none";
+      } else {
+        document.getElementById("signupbtn").removeAttribute("disabled");
+        document.getElementById("signupbtn").style.cursor = "pointer";
+      }
+    }
+
+    document.onload = verifyUsername(document.getElementById("username").value);
+  </script>
+</html>
