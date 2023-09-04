@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'auction1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'auction',
-        'USER': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'PASSWORD': 'rootmysql@1#'
+        'NAME': '',
+        'USER': '',
+        'HOST': '',
+        'PORT': '',
+        'PASSWORD': ''
     }
 }
 
